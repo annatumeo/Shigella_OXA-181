@@ -1,0 +1,8 @@
+### Step 1(A): Rapid bootstrapping + best-scoring ML tree (ASC_GTRCAT + Lewis ascertainment correction)
+raxmlHPC-PTHREADS-AVX2 -T 40 -s core_alignment.snps.phylip -n run1 -m ASC_GTRCAT --asc-corr=lewis -p 12345 -x 67890 -# 100 -f a
+
+### Step 1 (B): Independent replicate of rapid bootstrapping + best-scoring ML tree (different RNG seeds)
+raxmlHPC-PTHREADS-AVX2 -T 40 -s core_alignment.snps.phylip -n run2 -m ASC_GTRCAT --asc-corr=lewis -p 98760 -x 54321 -# 100 -f a 
+
+### Step 2: Map bootstrap support onto the best tree from Run 1 (using 200 bootstrap replicates)
+raxmlHPC-PTHREADS-AVX2 -T 40 -m ASC_GTRCAT --asc-corr=lewis -s core_alignment.snps.phylip -t RAxML_bestTree.run1 -z RAxML_bootstrap.all200 -f b -n all200
