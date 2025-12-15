@@ -1,3 +1,5 @@
+Reproducible code used to run RAxML.
+
 ### Step 1(A): Rapid bootstrapping + best-scoring ML tree (ASC_GTRCAT + Lewis ascertainment correction)
 raxmlHPC-PTHREADS-AVX2 -T 40 -s core_alignment.snps.phylip -n run1 -m ASC_GTRCAT --asc-corr=lewis -p 12345 -x 67890 -# 100 -f a
 
